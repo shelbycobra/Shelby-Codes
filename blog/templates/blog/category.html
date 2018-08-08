@@ -1,0 +1,16 @@
+{% extends 'blog/index.html' %}
+{% block content-title %}{{ category.title }}{% endblock %}
+
+
+{% block content %}
+    {% if posts %}
+        <ul>
+        {% for post in posts %}
+
+            <li><a href="{% url 'post' post.slug %}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>There are no posts.</p>
+    {% endif %}
+{% endblock %}

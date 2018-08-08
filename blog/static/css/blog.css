@@ -1,71 +1,151 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
 body {
-    padding: 15px 15px 0 15px;
-    margin: 0;
+    padding: 15px;
+    margin: 0 auto;
     background-color: #1a1821;
-    /*background-color: #111f21;*/
     color: #d3d0c4;
     height: 100%;
     font-family: 'Nunito Sans', sans-serif;
+    padding: 0px;
+    font-size: 14px;
 }
 
-/*#body-container {*/
-    /*margin: 0 auto;*/
-    /*height: 100%;*/
-    /*width: 1250px;*/
-/*}*/
+img {
+    width: 100%;
+    /*height: 100px;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#columns {
+    width: 100%;
+    margin: 0px;
+    margin-top: 10px;
+    padding: 10px 0px;
+    background-color: #d7d8cd;
+    background-color: darkslategray;
+    display: flex;
+    min-height: 80vh;
+}
+
+#sub-columns {
+    max-width: 1200px;
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    min-height: 80vh;
+}
+
+a.title, a.title:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover, a:active {
+    color: #ed3423;
+}
 
 #title {
     color: #e0ffe0;
     font-family: 'VT323', monospace;
     font-size: 3.5em;
     font-weight: normal;
+    letter-spacing: 0.0625em;
 }
 
 h2 {
-    color:#259669;
+    /*color:#259669;*/
+    color:#1a1821;
     font-family: 'VT323', monospace;
+    text-align: center;
+    font-size: 2em;
+    padding: 5px 0;
+    margin: 0;
+    letter-spacing: 0.05em;
 }
 
-#columns {
-    width: 1500px;
-    margin: 10px;
-    padding: 10px 0 10px auto;
+h3 {
+    font-size: 30px;
 }
+
+ul {
+    padding: 0;
+    padding-bottom: 10px;
+    margin: 0;
+}
+
 #post-container {
-    border: 20px solid #dadbd6;
-    background-color: #f2f2f2;
+    /*outline: 1px solid #259669;*/
+    border-right: 1px solid #259669;
+    border-left: 1px solid #259669;
+    background-color: #efebda;
+    background-color: #e8ede8;
     color: black;
     padding: 0;
-    margin: 0 0 0 10px;
-    width: 800px;
+    margin: 0 auto;
+    width: 100%;
     max-width: 1000px;
-    /*height: 90vh;*/
     float: left;
     display: inline-block;
 }
 
 #side-menu {
-    border: 20px solid #dadbd6;
-    background-color: #f2f2f2;
+    /*border: 2px solid #259669;*/
+    background-color: #efebda;
     color: black;
     padding: 0;
-    margin: 0;
-    width: 225px;
+    margin: 0 auto;
+    width: 30%;
     float: left;
 }
 
+#sidebar-container {
+    background-color: #efebda;
+    color: black;
+    padding: 0;
+    margin: 0 auto;
+    width: 30%;
+    float: left;
+}
 
 #post-sub-container{
-    padding: 15px 15px 0 15px;
+    padding: 15px;
 }
 
 #title {
     display: inline;
     padding: 10px;
+    margin-left: 0px;
 }
 
 .page-header {
-    width: 1100px;
+    width: 100%;
+    border: none;
+    margin: 0px auto;
+    margin-top: 10px;
+    padding: 0px;
+    max-width: 1000px;
+    box-sizing: border-box;
 }
 
 a.menu:link, a.menu:visited {
@@ -85,18 +165,54 @@ a.menu:hover, a.menu:active {
 li.menu {
      display: inline;
      margin: 10px;
-     padding: 10px;
-     font-size: 15px;
-    float: right;
+    margin-right: 0px;
+    margin-left: 20px;
+     padding: 7px;
+     font-size: 25px;
+     float: right;
+     font-family: 'VT323', monospace;
 }
 
 li.menu:hover, li.menu:active {
     /*background-color: honeydew;*/
-    background-color: indianred;
+    background-color: #259669;
+    /*background-color: indianred;*/
     border-radius: 3px;
+}
+
+h4 {
+    padding: 0px 0px 0px 10px;
+    margin: 0px;
+    font-size: 14px;
+}
+
+li.sidemenu {
+    list-style-type: none;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+h4.archives-month {
+    text-align: center;
+    text-decoration: underline;
+    padding: 0px;
+}
+li.archives-list {
+    list-style-type: none;
+    text-align: center;
 }
 
 #menu_list {
     list-style-type: none;
     display: inline;
 }
+
+#blog-post {
+    border: 2px solid #259669;
+    background-color: white;
+    padding: 20px;
+    margin: 0 25px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+

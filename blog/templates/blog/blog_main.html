@@ -1,0 +1,22 @@
+{% extends 'blog/index.html' %}
+
+{% block content-title %}Blog{% endblock %}
+
+{% block content %}
+
+    <div id="post-sub-container">
+        {% if posts %}
+            {% for post in posts %}
+                <div id="blog-post">
+                    <img src="{{ post.img }}">
+                    <p id="post-date-published">published: {{ post.publish_date }}</p>
+                    <h3><a href="{% url 'blog:post' post.slug %}">{{ post.title }}</a></h3>
+                    <p id="post-text">{{ post.body|truncatewords:30 }}</p>
+                </div>
+            {% endfor %}
+            {% else %}
+            <p>There are no posts.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -6,84 +6,108 @@
     <meta charset="UTF-8">
     <title>{% block head_title %}shelby_codes{% endblock %}</title>
 
-{#    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">#}
-{#    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">#}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css?family=Asap|Nunito+Sans|VT323" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+
 </head>
 <body>
 <div id="body-container" class="container-fluid">
     <div class="page-header">
-        <h1 id="title">{% block title %}shelby_codes{% endblock %}</h1>
+        <h1 id="title"><a class="title" href="index.html">{% block title %}shelby_codes{% endblock %}</a></h1>
         <span id="menu_container">
             <ul id="menu_list">
-                <li class="menu"><a class="menu" href="index.html">About</a></li>
-                <li class="menu"><a class="menu" href="">Projects</a></li>
-                <li class="menu"><a class="menu" href="">Blog</a></li>
-                <li class="menu"><a class="menu" href="">Home</a></li>
+                <li class="menu"><a href="about.html" class="menu">About</a></li>
+                <li class="menu"><a class="menu" href="projects.html">Projects</a></li>
+                <li class="menu"><a class="menu" href="blog_main.html">Blog</a></li>
+                <li class="menu"><a href="index.html" class="menu">Home</a></li>
             </ul>
         </span>
     </div>
 
 {# columns #}
     <div id="columns">
-        <div id="side-menu" class="menu container">
-            <div class="col-sm-8">
-                {% block sidemenu %}
-                    <h2>Content</h2>
-                    <ul>
-                        {% for post in posts %}
-                            <li><a href="{{ post.get_absolute_url }}"></a></li>
-                        {% endfor %}
-                    </ul>
+        <div id="sub-columns">
+            {# START SIDE-MENU #}
+            <div id="side-menu" class="menu container">
 
+                    {% block sidemenu %}
+                        <h2>Categories</h2>
+                        <ul class="sidemenu">
+                            {% for category in categories %}
+                                <h4><a href="{% url 'blog:category' category.slug %}" id="cat_link">{{ category.title }}</a></h4>
+                                {% for post in posts %}
+                                    {% ifequal post.category category %}
+                                    <li class="sidemenu"><a href="{% url 'blog:post' post.slug %}"><sup>|</sup>--{{ post.title }}</a></li>
+                                    {% endifequal %}
+                                {% endfor %}
+
+                            {% endfor %}
+                        </ul>
+                    {% endblock %}
+
+            </div>
+            {# END SIDE-MENU #}
+
+
+
+            {# START BLOG-POSTS #}
+            <div id="post-container" class="content container">
+                <h2>{% block content-title %} Posts{% endblock %}</h2>
+                {% block content %}
+                <div id="post-sub-container">
+                {%  if posts %}
+                    {% for post in posts %}
+                        <div id="blog-post">
+                         <img src="{{ post.img }}">
+                            <p id="post-date-published">published: {{ post.publish_date }}</p>
+                            <h3><a href="{% url 'blog:post' post.slug %}">{{ post.title }}</a></h3>
+                            <p id="post-text">{{ post.body|truncatewords:30 }}</p>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>There are no posts.</p>
+                {% endif %}
+                </div>
                 {% endblock %}
             </div>
+            {# END BLOG-POSTS#}
 
-        </div>
-        <div id="post-container" class="content container">
-            <div class="col-sm-8">
-            {% block content %}
-                 <div>
-        <div id="post-sub-container">
-            <h2>Categories</h2>
-            {% if categories %}
 
-                <ul>
-                {% for category in categories %}
-
-                    <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a> </li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-
-            <h2>Posts</h2>
-            {%  if posts %}
-
-                {% for post in posts %}
-
-                    <div>
-                        <p>published: {{ post.published_date }}</p>
-                        <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-                        <p>{{ post.text }}</p>
+            {# START RIGHT-SIDE-BAR #}
+            <div id="sidebar-container">
+                {% block sidebar %}
+                    <div id="sidebar-sub-container">
+                    <h2>Archives</h2>
+                        <ul class="archives-list">
+                        <h4 class="archives-month">August 2018</h4>
+                            {% for post in posts %}
+                                {% ifequal post.publish_month 8 %}
+                                    <li class="archives-list">
+                                        <a href="{% url 'blog:post' post.slug %}">{{ post.title }}</a>
+                                    </li>
+                                {% endifequal %}
+                            {% endfor %}
+                        </ul>
+                    <h2>Keywords</h2>
                     </div>
-
-                {% endfor %}
-
-                {% else %}
-
-                <p>There are no posts.</p>
-
-            {% endif %}
-        </div>
-
-    </div>
-            {% endblock %}
+                {% endblock sidebar %}
             </div>
+            {# END RIGHT-SIDE-BAR #}
         </div>
     </div>
 {# end columns #}
 
+
+
+</div>
+
+
+<div id="footer">
+    {% block footer %}
+    {% endblock %}
 </div>
 </body>
 </html>

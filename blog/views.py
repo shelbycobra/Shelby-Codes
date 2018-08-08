@@ -1,33 +1,52 @@
 
-from blog.models import Post, Category
-from django.shortcuts import render_to_response, get_object_or_404
+# from blog.models import Post, Category
+from django.shortcuts import get_object_or_404, render
+
+from shelbycodes.blog.models import Post, Category
 
 
-def base(request):
-    return render_to_response('blog/index.html', {
+def index(request):
+    return render(request, 'blog/index.html', {
+        'categories': Category.objects.all(),
         'posts': Post.objects.all(),
     })
 
 
-def index(request):
-    return render_to_response('blog/index.html', {
-        'categories': Category.objects.all(),
-        'posts': Post.objects.all()[:5],
-
-    })
-
-
 def view_post(request, slug):
-    return render_to_response('blog/view_category.html', {
-        'post': get_object_or_404(Post, slug=slug)
+    post = get_object_or_404(Post, slug=slug)
+    return render(request, 'blog/post.html', {
+        'categories': Category.objects.all(),
+        'posts': Post.objects.filter(category=post.category),
+        'post': post,
     })
 
 
 def view_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    return render_to_response('blog/view_category.html', {
+    print("cat:", slug)
+    return render(request, 'blog/category.html', {
         'category': category,
-        'posts': Post.objects.filter(category=category)[:5]
+        'categories': Category.objects.all(),
+        'posts': Post.objects.filter(category=category)
     })
 
 
+def view_projects(request):
+    return render(request, 'blog/projects.html', {
+        'categories': Category.objects.all(),
+        'posts': Post.objects.all(),
+    })
+
+
+def blog_main(request):
+    return render(request, 'blog/blog_main.html', {
+        'categories': Category.objects.all(),
+        'posts': Post.objects.all(),
+    })
+
+
+def about(request):
+    return render(request, 'blog/about.html', {
+        'categories': Category.objects.all(),
+        'posts': Post.objects.all(),
+    })
