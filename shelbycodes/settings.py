@@ -25,7 +25,7 @@ SECRET_KEY = 'a8=m45mj$yi(pyl_as)nca$sc@hc#%2wlp0%$ftpv(*_h*thtd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shelbycodes.pythonanywhere.com']
 
 
 # Application definition
