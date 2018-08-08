@@ -2,6 +2,10 @@
 {#{% block head_title %}{{ post.title }}{% endblock %}#}
 {% block content-title %}{{ post.title }}{% endblock %}
 
+{% block welcome %}<div id="blog-post"><img id="post-img" src="{{ post.img }}">{% endblock %}
+
 {% block content %}
-    {{ post.body }}
+
+    <p>{{ post.body }}</p>
+    </div>
 {% endblock %}

@@ -20,7 +20,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255, default='0000000')
-    img = models.CharField(max_length=500, default="static/images/default.jpg")
+    img = models.CharField(max_length=500, default="/static/images/default.jpg")
     body = models.TextField(default='0000000')
     slug = models.SlugField(max_length=100, default='0000000', db_index=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)

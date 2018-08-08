@@ -40,7 +40,7 @@
                                 <h4><a href="{% url 'blog:category' category.slug %}" id="cat_link">{{ category.title }}</a></h4>
                                 {% for post in posts %}
                                     {% ifequal post.category category %}
-                                    <li class="sidemenu"><a href="{% url 'blog:post' post.slug %}"><sup>|</sup>--{{ post.title }}</a></li>
+                                    <li class="sidemenu"><a href="{% url 'blog:post' post.slug %}"><sup>|</sup>--{{ post.title|truncatechars:20 }}</a></li>
                                     {% endifequal %}
                                 {% endfor %}
 
@@ -59,9 +59,8 @@
                     <h1 id="welcome-title">Welcome!</h1>
                     <p class="welcome-content">
                         Updates:
-
                     </p>
-                {% endblock %}
+                {% endblock welcome %}
 
                 <h2 id="content-title">{% block content-title %}New Posts{% endblock %}</h2>
 
