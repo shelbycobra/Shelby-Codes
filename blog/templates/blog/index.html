@@ -52,19 +52,28 @@
             {# END SIDE-MENU #}
 
 
-
             {# START BLOG-POSTS #}
             <div id="post-container" class="content container">
-                <h2>{% block content-title %} Posts{% endblock %}</h2>
+
+                {% block welcome %}
+                    <h1 id="welcome-title">Welcome!</h1>
+                    <p class="welcome-content">
+                        Updates:
+
+                    </p>
+                {% endblock %}
+
+                <h2 id="content-title">{% block content-title %}New Posts{% endblock %}</h2>
+
                 {% block content %}
                 <div id="post-sub-container">
                 {%  if posts %}
-                    {% for post in posts %}
+                    {% for post in posts reversed %}
                         <div id="blog-post">
                          <img src="{{ post.img }}">
                             <p id="post-date-published">published: {{ post.publish_date }}</p>
                             <h3><a href="{% url 'blog:post' post.slug %}">{{ post.title }}</a></h3>
-                            <p id="post-text">{{ post.body|truncatewords:30 }}</p>
+                            <p id="post-text">{{ post.body|truncatewords:20 }}</p>
                         </div>
                     {% endfor %}
                     {% else %}

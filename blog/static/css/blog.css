@@ -35,8 +35,8 @@ img {
 #columns {
     width: 100%;
     margin: 0px;
-    margin-top: 10px;
-    padding: 10px 0px;
+    /*margin-top: 10px;*/
+    padding: 0px;
     background-color: #d7d8cd;
     background-color: darkslategray;
     display: flex;
@@ -44,8 +44,8 @@ img {
 }
 
 #sub-columns {
-    max-width: 1200px;
-    width: 1000px;
+    max-width: 1500px;
+    width: 1250px;
     margin: 0 auto;
     display: flex;
     min-height: 80vh;
@@ -73,6 +73,13 @@ a:hover, a:active {
     letter-spacing: 0.0625em;
 }
 
+h1#welcome-title {
+    font-family: 'VT323', monospace;
+    text-align: center;
+    font-size: 60px;
+    color: #259669;
+}
+
 h2 {
     /*color:#259669;*/
     color:#1a1821;
@@ -82,6 +89,10 @@ h2 {
     padding: 5px 0;
     margin: 0;
     letter-spacing: 0.05em;
+}
+
+h2#content-title {
+    font-size: 40px;
 }
 
 h3 {
@@ -104,7 +115,8 @@ ul {
     padding: 0;
     margin: 0 auto;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1500px;
+    min-width: 500px;
     float: left;
     display: inline-block;
 }
@@ -112,20 +124,24 @@ ul {
 #side-menu {
     /*border: 2px solid #259669;*/
     background-color: #efebda;
+    background-color: white;
     color: black;
     padding: 0;
     margin: 0 auto;
-    width: 30%;
+    width: 25%;
     float: left;
+    min-width: 150px;
 }
 
 #sidebar-container {
     background-color: #efebda;
+    background-color: white;
     color: black;
     padding: 0;
     margin: 0 auto;
-    width: 30%;
+    width: 25%;
     float: left;
+    min-width: 150px;
 }
 
 #post-sub-container{
@@ -144,7 +160,7 @@ ul {
     margin: 0px auto;
     margin-top: 10px;
     padding: 0px;
-    max-width: 1000px;
+    max-width: 1250px;
     box-sizing: border-box;
 }
 
@@ -167,7 +183,7 @@ li.menu {
      margin: 10px;
     margin-right: 0px;
     margin-left: 20px;
-     padding: 7px;
+     padding: 0px 7px;
      font-size: 25px;
      float: right;
      font-family: 'VT323', monospace;
@@ -208,11 +224,12 @@ li.archives-list {
 }
 
 #blog-post {
-    border: 2px solid #259669;
+    /*border: 2px solid #259669;*/
     background-color: white;
     padding: 20px;
-    margin: 0 25px;
+    margin: 0 auto;
     margin-top: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 100%;
 }
 
