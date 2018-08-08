@@ -3,12 +3,6 @@ from blog.models import Post, Category
 from django.shortcuts import render_to_response, get_object_or_404
 
 
-def base(request):
-    return render_to_response('blog/index.html', {
-        'posts': Post.objects.all(),
-    })
-
-
 def index(request):
     return render_to_response('blog/index.html', {
         'categories': Category.objects.all(),
@@ -18,7 +12,7 @@ def index(request):
 
 
 def view_post(request, slug):
-    return render_to_response('blog/view_category.html', {
+    return render_to_response('blog/view_post.html', {
         'post': get_object_or_404(Post, slug=slug)
     })
 

@@ -2,51 +2,73 @@ body {
     padding: 15px 15px 0 15px;
     margin: 0;
     background-color: #1a1821;
-    /*background-color: #111f21;*/
     color: #d3d0c4;
     height: 100%;
     font-family: 'Nunito Sans', sans-serif;
+    padding: 0px;
+    font-size: 14px;
 }
 
-/*#body-container {*/
-    /*margin: 0 auto;*/
-    /*height: 100%;*/
-    /*width: 1250px;*/
-/*}*/
+#columns {
+    width: 100%;
+    margin: 0px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #d7d8cd;
+    height: 500px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover, a:active {
+    color: #ed3423;
+}
 
 #title {
     color: #e0ffe0;
     font-family: 'VT323', monospace;
     font-size: 3.5em;
     font-weight: normal;
+    letter-spacing: 0.0625em;
 }
 
 h2 {
-    color:#259669;
+    /*color:#259669;*/
+    color:#1a1821;
     font-family: 'VT323', monospace;
+    text-align: center;
+    font-size: 2em;
+    padding: 0;
+    padding-top: 5px;
+    margin: 0;
+    letter-spacing: 0.05em;
 }
 
-#columns {
-    width: 1500px;
-    margin: 10px;
-    padding: 10px 0 10px auto;
+ul {
+    padding: 0;
+    padding-bottom: 10px;
+    margin: 0;
 }
+
 #post-container {
-    border: 20px solid #dadbd6;
-    background-color: #f2f2f2;
+    border: 2px solid #999689;
+    background-color: #efebda;
     color: black;
     padding: 0;
-    margin: 0 0 0 10px;
+    margin: 0 0 0 0px;
+    margin-left: 10px;
     width: 800px;
     max-width: 1000px;
-    /*height: 90vh;*/
     float: left;
     display: inline-block;
 }
 
 #side-menu {
-    border: 20px solid #dadbd6;
-    background-color: #f2f2f2;
+    border: 2px solid #259669;
+    background-color: #efebda;
     color: black;
     padding: 0;
     margin: 0;
@@ -54,9 +76,8 @@ h2 {
     float: left;
 }
 
-
 #post-sub-container{
-    padding: 15px 15px 0 15px;
+    padding: 15px;
 }
 
 #title {
@@ -87,16 +108,35 @@ li.menu {
      margin: 10px;
      padding: 10px;
      font-size: 15px;
-    float: right;
+     float: right;
 }
 
 li.menu:hover, li.menu:active {
     /*background-color: honeydew;*/
-    background-color: indianred;
+    background-color: #259669;
+    /*background-color: indianred;*/
     border-radius: 3px;
+}
+
+h4 {
+    padding: 0px 0px 0px 10px;
+    margin: 0px;
+    font-size: 14px;
+}
+
+li.sidemenu {
+    list-style-type: none;
+    padding-left: 10px;
+    font-size: 14px;
 }
 
 #menu_list {
     list-style-type: none;
     display: inline;
 }
+
+#blog-post {
+    border: 1px solid #259669;
+    padding: 10px;
+}
+

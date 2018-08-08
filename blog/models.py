@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.urls import reverse
-#from .behaviors import Authorable, Permalinkable, Timestampable, Publishable
 
 
 class Category(models.Model):

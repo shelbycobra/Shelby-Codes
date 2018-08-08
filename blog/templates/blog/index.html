@@ -29,58 +29,45 @@
     <div id="columns">
         <div id="side-menu" class="menu container">
             <div class="col-sm-8">
+
                 {% block sidemenu %}
-                    <h2>Content</h2>
+
+                    <h2>Categories</h2>
                     <ul>
-                        {% for post in posts %}
-                            <li><a href="{{ post.get_absolute_url }}"></a></li>
+                        {% for category in categories %}
+                            <h4><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></h4>
+                            {% for post in posts.objects.filter(category=category) %}
+                                <li class="sidemenu"><a href="{{ post.get_absolute_url }}">-- {{ post.title }}</a></li>
+                            {% endfor %}
                         {% endfor %}
                     </ul>
 
                 {% endblock %}
-            </div>
 
+            </div>
         </div>
         <div id="post-container" class="content container">
-            <div class="col-sm-8">
+
             {% block content %}
-                 <div>
-        <div id="post-sub-container">
-            <h2>Categories</h2>
-            {% if categories %}
 
-                <ul>
-                {% for category in categories %}
-
-                    <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a> </li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-
+            <div id="post-sub-container">
             <h2>Posts</h2>
             {%  if posts %}
-
                 {% for post in posts %}
-
-                    <div>
-                        <p>published: {{ post.published_date }}</p>
-                        <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-                        <p>{{ post.text }}</p>
+                    <div id="blog-post">
+                        <p id="post-date-published">published: {{ post.published_date }}</p>
+                        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                        <p id="post-text">{{ post.text }}afsegsg</p>
                     </div>
-
                 {% endfor %}
-
                 {% else %}
-
                 <p>There are no posts.</p>
-
             {% endif %}
-        </div>
-
-    </div>
-            {% endblock %}
             </div>
         </div>
+
+        {% endblock %}
+
     </div>
 {# end columns #}
 
