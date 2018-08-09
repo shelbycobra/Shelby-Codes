@@ -8,7 +8,7 @@ from blog.models import Post, Category
 def index(request):
     return render(request, 'blog/index.html', {
         'categories': Category.objects.all(),
-        'posts': Post.objects.all(),
+        'posts': Post.objects.all()[:10],
     })
 
 
@@ -16,7 +16,7 @@ def view_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     return render(request, 'blog/post.html', {
         'categories': Category.objects.all(),
-        'posts': Post.objects.filter(category=post.category),
+        'posts': Post.objects.all(),
         'post': post,
     })
 

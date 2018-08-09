@@ -1,4 +1,5 @@
 {% load static %}
+{#{% load django_bootstrap_breadcrumbs %}#}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,21 +16,26 @@
 </head>
 <body>
 <div id="body-container" class="container-fluid">
+{##}
+{#{% block breadcrumbs %}#}
+{#    {% clear_breadcrumbs %}#}
+{#    {% breadcrumb 'Categories' categories %}#}
+{#{% endblock %}#}
+
     <div class="page-header">
         <h1 id="title"><a class="title" href="index.html">{% block title %}shelby_codes{% endblock %}</a></h1>
-        <span id="menu_container">
             <ul id="menu_list">
-                <li class="menu"><a href="about.html" class="menu">About</a></li>
-                <li class="menu"><a class="menu" href="projects.html">Projects</a></li>
-                <li class="menu"><a class="menu" href="blog_main.html">Blog</a></li>
-                <li class="menu"><a href="index.html" class="menu">Home</a></li>
+                <li class="menu"><a href="{% url 'blog:about' %}" class="menu">About</a></li>
+                <li class="menu"><a href="{% url 'blog:projects' %}" class="menu">Projects</a></li>
+                <li class="menu"><a href="{% url 'blog:blog_main' %}" class="menu">Blog</a></li>
+                <li class="menu"><a href="{% url 'blog:index' %}" class="menu">Home</a></li>
             </ul>
-        </span>
     </div>
 
 {# columns #}
     <div id="columns">
         <div id="sub-columns">
+
             {# START SIDE-MENU #}
             <div id="side-menu" class="menu container">
 
@@ -40,7 +46,7 @@
                                 <h4><a href="{% url 'blog:category' category.slug %}" id="cat_link">{{ category.title }}</a></h4>
                                 {% for post in posts %}
                                     {% ifequal post.category category %}
-                                    <li class="sidemenu"><a href="{% url 'blog:post' post.slug %}"><sup>|</sup>--{{ post.title|truncatechars:20 }}</a></li>
+                                    <li class="sidemenu"><a class="sidemenu" href="{% url 'blog:post' post.slug %}"><sup>|</sup>--{{ post.title|truncatechars:25 }}</a></li>
                                     {% endifequal %}
                                 {% endfor %}
 
@@ -54,17 +60,18 @@
 
             {# START BLOG-POSTS #}
             <div id="post-container" class="content container">
-
+                <div id="breadcrumbs">Breadcrumbs > breadcrumbs</div>
                 {% block welcome %}
                     <h1 id="welcome-title">Welcome!</h1>
                     <p class="welcome-content">
                         Updates:
                     </p>
                 {% endblock welcome %}
-
-                <h2 id="content-title">{% block content-title %}New Posts{% endblock %}</h2>
+                {% block content-title %}<h2 id="content-title">New Posts</h2>{% endblock %}
 
                 {% block content %}
+
+{#                {% render_breadcrumbs %}#}
                 <div id="post-sub-container">
                 {%  if posts %}
                     {% for post in posts reversed %}
@@ -94,7 +101,7 @@
                             {% for post in posts %}
                                 {% ifequal post.publish_month 8 %}
                                     <li class="archives-list">
-                                        <a href="{% url 'blog:post' post.slug %}">{{ post.title }}</a>
+                                        <a class="archives-list" href="{% url 'blog:post' post.slug %}">{{ post.title }}</a>
                                     </li>
                                 {% endifequal %}
                             {% endfor %}

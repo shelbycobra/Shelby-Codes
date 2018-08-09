@@ -1,11 +1,29 @@
 {% extends 'blog/index.html' %}
-{#{% block head_title %}{{ post.title }}{% endblock %}#}
-{% block content-title %}{{ post.title }}{% endblock %}
 
-{% block welcome %}<div id="blog-post"><img id="post-img" src="{{ post.img }}">{% endblock %}
+{#{% load django_bootstrap_breadcrumbs %}#}
+{#{% block head_title %}{{ post.title }}{% endblock %}#}
+{% block content-title %}{% endblock %}
+{% block welcome %}{% endblock %}
+{#{% block breadcrumbs %}#}
+{##}
+{#    {{ block.super }}#}
+{#    {% breadcrumb 'Post' url 'blog:post' post.slug %}#}
+{#{% endblock %}#}
 
 {% block content %}
+ <div id="post-sub-container">
+    <div id="blog-post">
 
-    <p>{{ post.body }}</p>
+        {# HEADER #}
+        <div id="post-header">
+            <h3 id="post-title">{{ post.title }}</h3>
+            <h4 id="post-subline">{{ post.publish_date }} by Shelby</h4>
+            <img id="post-img" src="{{ post.img }}">
+        </div>
+        {# END HEADER #}
+        {% autoescape off %}
+        <p>{{ post.body }}</p>
+        {% endautoescape %}
+        </div>
     </div>
 {% endblock %}
